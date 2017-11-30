@@ -1,4 +1,4 @@
-FROM ???
+FROM node:8.9
 
 # working directory setup
 
@@ -6,9 +6,10 @@ RUN mkdir -p /var/app
 WORKDIR /var/app
 
 # get the app into the image
-COPY ???
+COPY . /var/app
 
 # how to npm install ???
+RUN npm install
 
 # run the app when the container starts
-CMD ["node", "???"]
+CMD ["node", "src/index.js"]
