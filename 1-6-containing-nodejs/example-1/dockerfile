@@ -1,5 +1,5 @@
-FROM ???
+FROM node:8.9
 
-COPY ???
+COPY hello.js /
 
 CMD ["node", "hello.js"]
