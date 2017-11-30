@@ -17,5 +17,9 @@ EXPOSE 3000
 # ... not needed, if we "npm start"
 ENV NODE_ENV=development DEBUG=*
 
+# secure the image with lower-priv user
+RUN useradd --no-log-init -r app
+USER app
+
 # run the app
 CMD ["npm", "start"]
