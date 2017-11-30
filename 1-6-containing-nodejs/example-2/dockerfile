@@ -1,9 +1,12 @@
 FROM node:8.9
 
 # create a working directory for the app
+RUN mkdir -p /var/app
+
+WORKDIR /var/app
 
 # copy the app to the image
-COPY src /
+COPY src /var/app
 
 # run the app when a container starts
 CMD ["node", "index.js"]
