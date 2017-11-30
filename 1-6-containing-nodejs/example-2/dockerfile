@@ -1,9 +1,9 @@
-FROM ???
+FROM node:8.9
 
 # create a working directory for the app
 
 # copy the app to the image
-COPY ???
+COPY src /
 
 # run the app when a container starts
-CMD ["node", "???"]
+CMD ["node", "index.js"]
