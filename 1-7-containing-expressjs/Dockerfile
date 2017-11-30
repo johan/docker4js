@@ -15,7 +15,7 @@ EXPOSE 3000
 
 # set environment variables
 # ... not needed, if we "npm start"
-ENV NODE_ENV=development
+ENV NODE_ENV=development DEBUG=*
 
 # run the app
 CMD ["npm", "start"]
