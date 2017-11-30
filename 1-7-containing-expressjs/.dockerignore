@@ -67,3 +67,6 @@ typings/
 # misc
 *.orig
 .DS_Store
+
+Dockerfile
+.dockerignore
