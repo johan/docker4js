@@ -6,10 +6,15 @@
     "start": "NODE_PATH=./lib node ./web/bin/www",
     "docker:build": "docker build -t d4js-2-1 .",
     "docker:build:dev": "docker build -t d4js-2-1:dev -f dev.dockerfile .",
-    "docker:run": "docker run -d -p 3000:3000 --name d4js-2-1 -v $PWD:/var/app -v d4js2-1:/var/app/node_modules d4js-2-1",
-    "docker:run:dev": "docker run -d -p 3000:3000 --name d4js-2-1-dev -v $PWD:/var/app -v d4js2-1:/var/app/node_modules d4js-2-1:dev",
+    "docker:run": "npm run docker:stop; docker run --rm -p 3000:3000 --link mongo-apple --name d4js-2-1 d4js-2-1",
+    "docker:run:dev": "npm run docker:stop:dev; docker run --rm -p 3000:3000 --link mongo-apple --name d4js-2-1-dev d4js-2-1:dev",
     "docker:start": "docker start d4js-2-1",
-    "docker:start:dev": "docker start d4js-2-1-dev"
+    "docker:start:dev": "docker start d4js-2-1-dev",
+    "docker:stop:any": "(($(docker ps -f name=$NAME | wc -l) > 1)) && docker stop $NAME || true",
+    "docker:stop": "NAME=d4js-2-1 npm run docker:stop:any",
+    "docker:stop:dev": "NAME=d4js-2-1-dev npm run docker:stop:any",
+    "docker:run:shell": "docker exec -it --user root d4js-2-1 /bin/bash",
+    "docker:run:shell:dev": "docker exec -it --user root d4js-2-1-dev /bin/bash"
   },
   "dependencies": {
     "body-parser": "~1.13.2",

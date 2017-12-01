@@ -16,5 +16,9 @@ RUN npm install --production
 # expose ports
 EXPOSE 3000
 
+# secure the image with lower-priv user
+RUN useradd --no-log-init -r app
+USER app
+
 # run the app
 CMD ["node", "web/bin/www"]
